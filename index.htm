@@ -75,7 +75,8 @@
     <div class="feature"><h3>Diversão garantida</h3><p>Curvas, retas e saltos que deixam qualquer carrinho voando!</p></div>
   </div>
 
-  <a href="https://bit.ly/mundocriado" class="cta-button">💬 Falar com o ChatBot</a>
+  <!-- Botão ChatBot -->
+  <a href="https://sl1nk.com/mundochat" class="cta-button">💬 Falar com o ChatBot</a>
 
   <!-- Depoimentos -->
   <div class="testimonials">
@@ -92,7 +93,7 @@
       Compre agora mesmo e aproveite a promoção da pista <span style="color:#ff9900;">compatível com carrinhos Hot Wheels</span>!<br>
       De <span style="text-decoration:line-through; color:#888;">R$ 95,00</span> por apenas <span style="color:#28a745;">R$ 85,26</span> 💥
     </p>
-    <a href="https://bit.ly/mundocriado" class="cta-button" style="margin-top:20px; display:inline-block;">🚀 Comprar Agora</a>
+    <a href="https://sl1nk.com/mundochat" class="cta-button" style="margin-top:20px; display:inline-block;">🚀 Comprar Agora</a>
   </div>
 
 </div>
@@ -122,56 +123,3 @@ function replayVideo() {
   document.getElementById('videoContainer').style.display = 'block';
   document.getElementById('replayBtn').style.display = 'none';
   player.seekTo(0);
-  player.playVideo();
-}
-
-// Countdown 8 min
-function startCountdown() {
-  const countdownElement = document.getElementById('countdown');
-  let endTime = new Date().getTime() + 8*60*1000;
-  setInterval(() => {
-    let now = new Date().getTime();
-    let distance = endTime - now;
-    if(distance < 0) { countdownElement.innerHTML = "Oferta encerrada!"; return; }
-    let minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-    let seconds = Math.floor((distance % (1000*60)) / 1000);
-    countdownElement.innerHTML = `Oferta termina em: ${minutes}m ${seconds}s`;
-  }, 1000);
-}
-startCountdown();
-
-// Estoque e notificações
-let stock = 20;
-const stockBar = document.getElementById('stockBar');
-const stockText = document.getElementById('stockText');
-
-function showPurchaseNotification(){
-  const buyers = ["Alfredo Silva","Maria Oliveira","João Santos","Fernanda Souza","Carlos Pereira","Juliana Costa","Rafael Lima","Patrícia Gomes"];
-  const randomBuyer = buyers[Math.floor(Math.random() * buyers.length)];
-  const notification = document.createElement("div");
-  notification.className = "purchase-notification";
-  notification.innerText = `${randomBuyer} acabou de comprar uma unidade!`;
-  document.body.appendChild(notification);
-  setTimeout(()=>{ notification.remove(); }, 5000);
-}
-
-setInterval(() => {
-  if(stock > 0){
-    stock--;
-    stockBar.style.width = (stock/20)*100 + '%';
-    stockText.innerText = `Estoque restante: ${stock} unidades`;
-    showPurchaseNotification();
-  }
-}, 30000);
-
-// Depoimentos animados
-window.addEventListener("scroll", ()=>{
-  document.querySelectorAll(".testimonial").forEach(t=>{
-    const rect = t.getBoundingClientRect();
-    if(rect.top < window.innerHeight - 50) t.classList.add("show");
-  });
-});
-</script>
-
-</body>
-</html>
