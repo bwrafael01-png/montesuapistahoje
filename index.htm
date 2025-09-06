@@ -144,20 +144,21 @@ function startCountdown() {
 }
 startCountdown();
 
-// Estoque cai de 3 em 3 min
+// Estoque cai a cada 30 segundos e exibe notificação
 let stock = 20;
 const stockBar = document.getElementById('stockBar');
 const stockText = document.getElementById('stockText');
+
 setInterval(() => {
   if(stock > 0){
-    stock--;
+    stock--; // diminui o estoque
     stockBar.style.width = (stock/20)*100 + '%';
     stockText.innerText = `Estoque restante: ${stock} unidades`;
-    showPurchaseNotification();
+    showPurchaseNotification(); // mostra notificação
   }
-}, 180000);
+}, 30000); // 30 segundos
 
-// Notificação de compra 30s
+// Função de notificação
 function showPurchaseNotification(){
   const buyers = ["Alfredo Silva","Maria Oliveira","João Santos","Fernanda Souza","Carlos Pereira","Juliana Costa","Rafael Lima","Patrícia Gomes"];
   const randomBuyer = buyers[Math.floor(Math.random() * buyers.length)];
