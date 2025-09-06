@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://bwrafael01-png.github.io/sitemap.xml
+
+Sitemap: https://bwrafael01-png.github.io/montesuapistahoje/sitemap.xml
