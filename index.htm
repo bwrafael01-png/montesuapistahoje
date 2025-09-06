@@ -112,16 +112,13 @@ function onYouTubeIframeAPIReady() {
     events: { 'onReady': onPlayerReady, 'onStateChange': onPlayerStateChange }
   });
 }
-
 function onPlayerReady(event) { event.target.playVideo(); }
-
 function onPlayerStateChange(event) {
   if (event.data === YT.PlayerState.ENDED) {
     document.getElementById('videoContainer').style.display = 'none';
     document.getElementById('replayBtn').style.display = 'block';
   }
 }
-
 function replayVideo() {
   document.getElementById('videoContainer').style.display = 'block';
   document.getElementById('replayBtn').style.display = 'none';
@@ -144,21 +141,11 @@ function startCountdown() {
 }
 startCountdown();
 
-// Estoque cai a cada 30 segundos e exibe notificação
+// Estoque e notificações funcionais
 let stock = 20;
 const stockBar = document.getElementById('stockBar');
 const stockText = document.getElementById('stockText');
 
-setInterval(() => {
-  if(stock > 0){
-    stock--; // diminui o estoque
-    stockBar.style.width = (stock/20)*100 + '%';
-    stockText.innerText = `Estoque restante: ${stock} unidades`;
-    showPurchaseNotification(); // mostra notificação
-  }
-}, 30000); // 30 segundos
-
-// Função de notificação
 function showPurchaseNotification(){
   const buyers = ["Alfredo Silva","Maria Oliveira","João Santos","Fernanda Souza","Carlos Pereira","Juliana Costa","Rafael Lima","Patrícia Gomes"];
   const randomBuyer = buyers[Math.floor(Math.random() * buyers.length)];
@@ -169,6 +156,15 @@ function showPurchaseNotification(){
   setTimeout(()=>{ notification.remove(); }, 5000);
 }
 
+setInterval(() => {
+  if(stock > 0){
+    stock--;
+    stockBar.style.width = (stock/20)*100 + '%';
+    stockText.innerText = `Estoque restante: ${stock} unidades`;
+    showPurchaseNotification();
+  }
+}, 30000);
+
 // Depoimentos animados
 window.addEventListener("scroll", ()=>{
   document.querySelectorAll(".testimonial").forEach(t=>{
@@ -177,6 +173,5 @@ window.addEventListener("scroll", ()=>{
   });
 });
 </script>
-
 </body>
 </html>
